@@ -22,7 +22,7 @@ c, err := retryablehttp.NewClient(
 
         statusCode := res.StatusCode
         if statusCode < 200 || statusCode > 299 {
-            return ErrStatusCode(statusCode)
+            return ErrUnsuccessfulStatusCode
         }
 
         return nil
@@ -38,7 +38,7 @@ c, err := retryablehttp.NewClient(
 
 **WithResponseHandler** option configures response handler which handles responses.
 
-Client has `Do(*http.Request) (*http.Response, error)` function which is identical to `*http.Client`. This makes our client broadly applicable with minimal effort.
+Client has `Do(*http.Request) (*http.Response, error)` function which is identical to `*http.Client`. This makes retryable http client broadly applicable with minimal effort.
 
 ```go
 res, err := c.Do(req)

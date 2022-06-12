@@ -77,7 +77,7 @@ func WithMaxReqCount(maxReqCount int) Option {
 }
 
 // WithBackoff configures client's backoff duration, which represents sleeping intervals between retries.
-// Default backoff is 0.
+// Default backoff duration is 0.
 func WithBackoff(backoff time.Duration) Option {
 	return func(c *Client) error {
 		if backoff < 0 {
@@ -100,7 +100,7 @@ func WithBackoff(backoff time.Duration) Option {
 //
 //  	statusCode := res.StatusCode
 //  	if statusCode < 200 || statusCode > 299 {
-//  		return ErrStatusCode(statusCode)
+//  		return ErrUnsuccessfulStatusCode
 //  	}
 //
 //  	return nil
@@ -117,7 +117,7 @@ func WithResHandler(resHandler func(res *http.Response) error) Option {
 	}
 }
 
-// NewClient creates and returns new retryable http client instance
+// NewClient creates and returns new retryable http client instance.
 func NewClient(opts ...Option) (*Client, error) {
 	c := &Client{
 		httpClient:  http.DefaultClient,
@@ -135,7 +135,7 @@ func NewClient(opts ...Option) (*Client, error) {
 	return c, nil
 }
 
-// Do sends http request with automatic retries returns first successful or last unsuccessful response
+// Do sends http request with automatic retries returns first successful or last unsuccessful response.
 func (c *Client) Do(req *http.Request) (*http.Response, error) {
 	var res *http.Response
 	var err error
