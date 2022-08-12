@@ -1,8 +1,9 @@
 # retryablehttp
-Retryable HTTP Client In Go
 
 [![Go](https://github.com/ermanimer/retryablehttp/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/ermanimer/retryablehttp/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ermanimer/retryablehttp)](https://goreportcard.com/report/github.com/ermanimer/retryablehttp)
+
+Retryable HTTP Client In Go
 
 Simple HTTP client interface with automatic retries and constant backoff. Inspired by [HashiCorp](https://github.com/hashicorp)'s [go-retryablehttp](https://github.com/hashicorp/go-retryablehttp) library.
 
